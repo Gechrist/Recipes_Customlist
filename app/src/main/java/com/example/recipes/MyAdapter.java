@@ -10,6 +10,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.AbstractCollection;
 import java.util.ArrayList;
 
@@ -54,7 +56,7 @@ public class MyAdapter extends BaseAdapter {
         txtVw_title.setText(recipes.get(i).getTitle());
         txtVw_description.setText(recipes.get(i).getDescription());
         txtVw_fulldescription.setText(recipes.get(i).getDescription());
-        image.setImageResource(recipes.get(i).getImageid());
+        Picasso.with(context).load(recipes.get(i).getUrl()).into(image);
         return newview;
 
     }

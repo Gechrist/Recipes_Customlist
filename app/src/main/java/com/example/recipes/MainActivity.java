@@ -3,6 +3,7 @@ package com.example.recipes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,6 +16,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private SQLiteDatabase database;
+    private SqlLiteHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,8 +26,11 @@ public class MainActivity extends AppCompatActivity {
 
         ListView listview = findViewById(R.id.list);
 
-        ArrayList<Recipes> recipes = Recipes_data.getRecipes();
+        Recipes_data source = new Recipes_data(MainActivity.this);
 
+        source.open();
+        ArrayList<Recipes> recipes = source.getAllRecipes();
+        source.close();
 
         MyAdapter adapter = new MyAdapter(MainActivity.this, recipes);
         listview.setAdapter(adapter);

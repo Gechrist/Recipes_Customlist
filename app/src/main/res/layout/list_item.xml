@@ -18,7 +18,7 @@
             android:layout_weight="1"
             android:foregroundGravity="left"
             android:paddingTop="10dp"
-            app:srcCompat="@drawable/ortikia_krasata" />
+            app:srcCompat="@android:drawable/btn_default" />
 
         <TextView
             android:id="@+id/txt_title"
